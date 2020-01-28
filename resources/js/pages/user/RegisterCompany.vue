@@ -42,7 +42,7 @@
                     <div class="col-4">
                       <div class="form-group" v-bind:class="{ 'has-error': has_error && errors.whats }">
                           <label for="whats">Whatsapp</label>
-                          <input type="text" id="whats" class="form-control" placeholder="(99) 99999-9999" v-model="whats">
+                          <the-mask :mask="['(##) ####-####', '(##) #####-####']" class="form-control" id="whats" v-model="whats" placeholder="(99) 99999-9999"/>
                           <span class="help-block" v-if="has_error && errors.whats">{{ errors.whats }}</span>
                       </div>
                     </div>
@@ -288,6 +288,7 @@
       </div>
 </template>
 <script>
+import {TheMask} from 'vue-the-mask'
   export default {
     data() {
       return {
@@ -333,8 +334,10 @@
         obs: ''
       }
     },
+    components: {
+      TheMask
+    },
     methods: {
-      //register() {
         register: function(event) {
         var app = this
         var data = {
@@ -391,27 +394,6 @@
             app.error = error.response.data.error
             app.errors = error.response.data.errors || {}
         });
-        
-        // this.$auth.registerCompany({
-        //   data: {
-        //     empresa: app.empresa,
-        //     responsavel: app.responsavel,
-        //     email: app.email,
-        //     setor: app.setor,
-        //     whats: app.whats
-        //   },
-        //   success: function () {
-        //     app.success = true
-        //     this.$router.go(-1)
-        //     //this.$router.push({name: 'admin.dashboard', params: {successRegistrationRedirect: true}})
-        //   },
-        //   error: function (res) {
-        //     console.log(res.response.data.errors)
-        //     app.has_error = true
-        //     app.error = res.response.data.error
-        //     app.errors = res.response.data.errors || {}
-        //   }
-        // })
       }
     }
   }

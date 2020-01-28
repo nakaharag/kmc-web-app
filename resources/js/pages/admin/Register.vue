@@ -39,7 +39,7 @@
                       <div class="col-4">
                         <div class="form-group" v-bind:class="{ 'has-error': has_error && errors.whats }">
                             <label for="whats">Whatsapp</label>
-                            <input type="text" id="whats" class="form-control" placeholder="(99) 99999-9999" v-model="whats">
+                            <the-mask :mask="['(##) ####-####', '(##) #####-####']" class="form-control" id="whats" v-model="whats" placeholder="(99) 99999-9999"/>
                             <span class="help-block" v-if="has_error && errors.whats">{{ errors.whats }}</span>
                         </div>
                       </div>
@@ -78,6 +78,7 @@
     </div>
 </template>
 <script>
+import {TheMask} from 'vue-the-mask'
   export default {
     data() {
       return {
@@ -94,6 +95,9 @@
         companies: '',
         empresa: ''
       }
+    },
+    components: {
+      TheMask
     },
     methods: {
       register() {
