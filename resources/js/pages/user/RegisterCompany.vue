@@ -42,7 +42,7 @@
                     <div class="col-4">
                       <div class="form-group" v-bind:class="{ 'has-error': has_error && errors.whats }">
                           <label for="whats">Whatsapp</label>
-                          <input type="text" id="whats" class="form-control" placeholder="(99) 99999-9999" v-model="whats">
+                          <the-mask :mask="['(##) ####-####', '(##) #####-####']" id="whats" class="form-control" placeholder="(99) 99999-9999" v-model="whats"/>
                           <span class="help-block" v-if="has_error && errors.whats">{{ errors.whats }}</span>
                       </div>
                     </div>
@@ -65,7 +65,8 @@
                     <div class="col-3">
                       <div class="form-group" v-bind:class="{ 'has-error': has_error && errors.faturamento }">
                           <label for="faturamento">Faturamento</label>
-                          <input type="text" id="faturamento" class="form-control" placeholder="Ex: R$ 1.000.000" v-model="faturamento">
+                          <money id="faturamento" class="form-control" placeholder="Ex: R$ 1.000.000" v-model="faturamento" v-bind="money"></money>
+                          
                           <span class="help-block" v-if="has_error && errors.faturamento">{{ errors.faturamento }}</span>
                       </div>
                     </div>
@@ -288,6 +289,8 @@
       </div>
 </template>
 <script>
+import {TheMask} from 'vue-the-mask'
+import {Money} from 'v-money'
   export default {
     data() {
       return {
@@ -330,11 +333,21 @@
         inscritos: '',
         contatos: '', 
         seguidores_twitter: '',
-        obs: ''
+        obs: '',
+        money: {
+          decimal: ',',
+          thousands: '.',
+          prefix: 'R$ ',
+          precision: 2,
+          masked: true
+        }
       }
     },
+    components: {
+      TheMask,
+      Money
+    },
     methods: {
-      //register() {
         register: function(event) {
         var app = this
         var data = {
@@ -391,27 +404,6 @@
             app.error = error.response.data.error
             app.errors = error.response.data.errors || {}
         });
-        
-        // this.$auth.registerCompany({
-        //   data: {
-        //     empresa: app.empresa,
-        //     responsavel: app.responsavel,
-        //     email: app.email,
-        //     setor: app.setor,
-        //     whats: app.whats
-        //   },
-        //   success: function () {
-        //     app.success = true
-        //     this.$router.go(-1)
-        //     //this.$router.push({name: 'admin.dashboard', params: {successRegistrationRedirect: true}})
-        //   },
-        //   error: function (res) {
-        //     console.log(res.response.data.errors)
-        //     app.has_error = true
-        //     app.error = res.response.data.error
-        //     app.errors = res.response.data.errors || {}
-        //   }
-        // })
       }
     }
   }
