@@ -289,8 +289,6 @@
       </div>
 </template>
 <script>
-import {TheMask} from 'vue-the-mask'
-import {Money} from 'v-money'
   export default {
     data() {
       return {
@@ -342,10 +340,6 @@ import {Money} from 'v-money'
           masked: true
         }
       }
-    },
-    components: {
-      TheMask,
-      Money
     },
     methods: {
         register: function(event) {
