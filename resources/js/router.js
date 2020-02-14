@@ -2,7 +2,9 @@ import VueRouter from 'vue-router'
 // Pages
 import Home from './pages/Home'
 import Register from './pages/admin/Register'
+import UpdateRegister from './pages/admin/UpdateRegister'
 import RegisterCompany from './pages/user/RegisterCompany'
+import EditCompany from './pages/user/EditCompany'
 import Company from './pages/user/Company'
 import Login from './pages/Login'
 import Survey from './pages/user/Survey'
@@ -13,6 +15,7 @@ import AdminDashboard from './pages/admin/Dashboard'
 import CadastroHoras from './pages/user/CadastroHoras'
 import ClientDashboard from './pages/client/Dashboard'
 import CadastroServicos from './pages/user/CadastroServicos'
+import CadastroSeguidores from './pages/user/CadastroSeguidores'
 
 // Routes
 const routes = [
@@ -74,6 +77,14 @@ const routes = [
     }
   },
   {
+    path: '/edit-company',
+    name: 'edit-company',
+    component: EditCompany,
+    meta: {
+      auth: {roles: [1, 2], redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
     path: '/cadastro-horas',
     name: 'cadastro-horas',
     component: CadastroHoras,
@@ -85,6 +96,14 @@ const routes = [
     path: '/cadastro-servicos',
     name: 'cadastro-servicos',
     component: CadastroServicos,
+    meta: {
+      auth: {roles: [1, 2], redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+  },
+  {
+    path: '/cadastro-seguidores',
+    name: 'cadastro-seguidores',
+    component: CadastroSeguidores,
     meta: {
       auth: {roles: [1, 2], redirect: {name: 'login'}, forbiddenRedirect: '/403'}
     }
@@ -106,6 +125,14 @@ const routes = [
     auth: {roles: [1, 2], redirect: {name: 'login'}, forbiddenRedirect: '/403'}
   }
   },
+  {
+    path: '/update-register',
+    name: 'update-register',
+    component: UpdateRegister,
+    meta: {
+      auth: {roles: [1, 2], redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+    }
+    },
   {
     path: '/user',
     name: 'user',

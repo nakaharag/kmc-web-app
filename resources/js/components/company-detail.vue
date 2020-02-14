@@ -20,38 +20,22 @@
           <p>{{ company.whats }}</p>
         </div>
         <div class="col-3">
+          <p><strong>Horas contratadas:</strong></p>
           <p><strong>Quantidade de clientes:</strong></p>
           <p><strong>Faturamento:</strong></p>
           <p><strong>Média de margem de lucro:</strong></p>
+          <button class="btn btn-danger" @click.prevent="deleteCompany">Apagar</button>
+          <router-link :to="{ name: 'edit-company', params: { companyId: company.id }}">
+            <button class="btn btn-secondary">Editar</button>
+          </router-link>
         </div>
         <div class="col-3">
+          <p>{{ company.horas }}</p>
           <p>{{ company.clientes }}</p>
           <p>{{ company.faturamento }}</p>
           <p>{{ company.margem }}</p>
         </div>
       </div>
-    <!--  <table class="table">
-          <tr>
-              <th scope="col">Empresa</th>
-              <th scope="col">Responsável</th>
-              <th scope="col">Setor</th>
-              <th scope="col">E-mail</th>
-              <th scope="col">Whats</th>
-              <th scope="col">Horas Contratadas</th>
-              <th scope="col">Data de cadastro</th>
-              <th scope="col" v-if="$auth.check(2)">Ações</th>
-          </tr>
-              <tr style="margin-bottom: 5px;">
-                  <th scope="row">{{ company.empresa }}</th>
-                  <td>{{ company.responsavel }}</td>
-                  <td>{{ company.setor }}</td>
-                  <td>{{ company.email }}</td>
-                  <td>{{ company.whats }}</td>
-                  <td>{{ company.horas }}</td>
-                  <td>{{ company.created_at | moment }}</td>
-                  <td @click.prevent="deleteCompany" v-if="$auth.check(2)"><a href="#"> Apagar</a></td>
-              </tr>
-      </table> -->
     </div>
     <div v-else>Carregando...</div>
 </div>

@@ -14,8 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {   
-        $this->call(CompanySeeder::class);
-
+        //$this->call(CompanySeeder::class);
+        
+        DB::table('companies')->insert([
+            'empresa' => 'Agência KMC',
+            'email' => 'financeiro@agenciakmc.com.br',
+            'setor' => 'Financeiro',
+            'whats' => '(11) 99999-9882',
+            'responsavel' => 'Kleber',
+            'horas' => '00'
+        ]);
+        
         User::create([
             'nome' => 'Admin',
             'email' => 'kleber@grupokmc.com.br',

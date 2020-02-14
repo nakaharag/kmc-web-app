@@ -48,4 +48,17 @@ class UserController extends Controller
                 'user' => $user->toArray()
             ], 200);
     }
+    public function store(Request $request)
+    {
+        $user = User::where('id', $request['id'])->update([
+            'role' => $request['role'],
+            'nome' => $request['nome'],
+            'email' => $request['email'],
+            'whats' => $request['whats'],
+            'id_company' => $request['id_company'],
+            'password' => $request['password']
+        ]);
+
+        return response()->json($user, 200);
+    }
 }

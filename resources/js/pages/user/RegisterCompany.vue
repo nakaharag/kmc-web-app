@@ -289,7 +289,10 @@
       </div>
 </template>
 <script>
+import {Money} from 'v-money'
+
   export default {
+    components: {Money},
     data() {
       return {
         empresa: '',

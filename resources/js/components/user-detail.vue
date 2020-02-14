@@ -17,7 +17,12 @@
               <td>{{ user.email }}</td>
               <td>{{ user.whats }}</td>
               <td>{{ user.created_at | moment }}</td>
-              <td @click.prevent="deleteUser" ><a href="#"> Apagar</a></td>
+              <td>
+                <button class="btn btn-danger" @click.prevent="deleteUser">Apagar</button>
+                <router-link :to="{ name: 'update-register', params: { userId: user.id }}">
+                  <button class="btn btn-secondary">Editar</button>
+                </router-link>
+              </td>
           </tr>
       </table>
     </div>

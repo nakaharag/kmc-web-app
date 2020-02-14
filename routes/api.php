@@ -32,8 +32,10 @@ Route::group(['middleware' => 'auth:api', 'cors'], function(){
     Route::get('users', 'UserController@index')->middleware('isAdmin');
     Route::delete('users/{id}', 'UserController@delete')->middleware('isAdmin');
     Route::get('users/{id}', 'UserController@show')->middleware('isAdminOrSelf');
+    Route::post('updateUser', 'UserController@store');
     // Companies
     Route::post('registerCompany', 'CompanyController@create');
+    Route::post('editCompany', 'CompanyController@store');
     Route::get('companies', 'CompanyController@index')->middleware('isAdminOrSelf');
     Route::delete('companies/{id}', 'CompanyController@delete')->middleware('isAdmin');
     Route::get('companies/{id}', 'CompanyController@show')->middleware('isAdminOrSelf');
@@ -50,6 +52,7 @@ Route::group(['middleware' => 'auth:api', 'cors'], function(){
     //Route::put('servico', 'ServicoController@update');
     // Client
     Route::get('users/find/{email}', 'UserController@find');
+    Route::post('seguidores', 'SeguidoresController@store');
 });
 Route::get('servico/{id}/', 'ServicoController@index');
 Route::get('servico/periods/{id}/', 'ServicoController@periods');

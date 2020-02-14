@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
         });
 
         Schema::table('users', function($table) {
-            $table->foreign('id_company')->references('id')->on('companies');
+            $table->foreign('id_company')->references('id')->on('companies')->onDelete('cascade');;
         });
     }
 

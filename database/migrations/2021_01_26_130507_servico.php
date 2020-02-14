@@ -23,8 +23,8 @@ class Servico extends Migration
         });
 
         Schema::table('servicos', function($table) {
-            $table->foreign('id_servico_lista')->references('id')->on('servico_listas');
-            $table->foreign('id_company')->references('id')->on('companies');
+            $table->foreign('id_servico_lista')->references('id')->on('servico_listas')->onDelete('cascade');;
+            $table->foreign('id_company')->references('id')->on('companies')->onDelete('cascade');;
         });
     }
 

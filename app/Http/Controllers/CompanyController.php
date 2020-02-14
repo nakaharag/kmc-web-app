@@ -115,7 +115,50 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$company = Company::findOrFail($request['id']);
+
+        $company = Company::where('id', $request['id'])->update([
+            'empresa' => $request['empresa'],
+            'email' => $request['email'],
+            'setor' => $request['setor'],
+            'responsavel' => $request['responsavel'],
+            'whats' => $request['whats'],
+            'horas' => $request['horas'],
+            'url_hospedagem' => $request['url_hospedagem'],
+            'user_hospedagem' => $request['user_hospedagem'],
+            'pw_hospedagem' => $request['pw_hospedagem'],
+            'url_googleads' => $request['url_googleads'],
+            'user_googleads' => $request['user_googleads'],
+            'pw_googleads' => $request['pw_googleads'],
+            'url_linkedin' => $request['url_linkedin'],
+            'user_linkedin' => $request['user_linkedin'],
+            'pw_linkedin' => $request['pw_linkedin'],
+            'url_twitter' => $request['url_twitter'],
+            'user_twitter' => $request['user_twitter'],
+            'pw_twitter' => $request['pw_twitter'],
+            'url_youtube' => $request['url_youtube'],
+            'user_youtube' => $request['user_youtube'],
+            'pw_youtube' => $request['pw_youtube'],
+            'url_facebook' => $request['url_facebook'],
+            'user_facebook' => $request['user_facebook'],
+            'pw_facebook' => $request['pw_facebook'],
+            'url_instagram' => $request['url_instagram'],
+            'user_instagram' => $request['user_instagram'],
+            'pw_instagram' => $request['pw_instagram'],
+            'margem' => $request['margem'],
+            'faturamento' => $request['faturamento'],
+            'clientes' => $request['clientes'],
+            'fans_face' => $request['fans_face'],
+            'seguidores_insta' => $request['seguidores_insta'],
+            'inscritos' => $request['inscritos'],
+            'contatos' => $request['contatos'], 
+            'seguidores_twitter' => $request['seguidores_twitter'],
+            'obs' => $request['obs']
+        ]);
+
+        //$company->update();
+
+        return response()->json($company, 200);
     }
 
     /**

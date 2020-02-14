@@ -13,7 +13,6 @@ import moment from "moment";
 import DatePicker from 'vue2-datepicker';
 import VueNumericInput from 'vue-numeric-input';
 
-
 // Set Vue globally
 window.Vue = Vue
 // Set Vue router
@@ -29,8 +28,6 @@ window.moment = moment
 
 Vue.config.productionTip = false
 
-
- 
 Vue.use(VueNumericInput)
 
 Vue.filter('moment', function (value) {
@@ -47,7 +44,8 @@ Vue.filter('format-thousands', function (value) {
   return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 });
 
-axios.defaults.baseURL = `http://127.0.0.1:8000/api`
+axios.defaults.baseURL = `http://localhost:8000/api`
+//axios.defaults.baseURL = `http://206.189.208.207/api`
 //axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`
 
 Vue.use(VueAuth, auth)

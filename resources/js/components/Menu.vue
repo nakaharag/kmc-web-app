@@ -1,5 +1,5 @@
 <template>
-<div class="container pb-2">
+<div class="container-fluid pb-2">
   <nav class="navbar navbar-expand-lg navbar-light bg-custom">
     <a class="navbar-brand">
       <router-link :to="{name: 'home'}">
@@ -103,6 +103,10 @@
             {
               name: 'Cadastro de Serviços',
               path: 'cadastro-servicos'
+            },
+            {
+              name: 'Evolução de Seguidores',
+              path: 'cadastro-seguidores'
             },
           ],
           // LOGGED Client

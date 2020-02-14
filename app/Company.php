@@ -16,7 +16,6 @@ class Company extends Model
         'pw_twitter','url_youtube','user_youtube','pw_youtube','url_facebook','user_facebook','pw_facebook','url_instagram','user_instagram','pw_instagram',
         'margem', 'faturamento', 'clientes', 'fans_face', 'seguidores_insta', 'inscritos', 'contatos',
         'seguidores_twitter', 'obs'
-    
     ];
 
     public function Survey()
@@ -30,5 +29,9 @@ class Company extends Model
     public function Servico()
     {
         return $this->hasMany(Servico::class);
+    }
+    public function Seguidores()
+    {
+        return $this->hasMany(Seguidores::class);
     }
 }
