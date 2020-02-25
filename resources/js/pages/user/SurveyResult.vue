@@ -36,7 +36,7 @@ export default {
   },
   mounted () {
     axios
-      .get(`https://dxsurvey.com/api/MySurveys/getSurveyResults?accessKey=3cf61e0528554c948f6fb4d6864d4c69&id=${this.$route.params.survey_id}`)
+      .get(`https://surveyjs.io/api/MySurveys/getSurveyResults?accessKey=3cf61e0528554c948f6fb4d6864d4c69&id=${this.$route.params.survey_id}`)
       .then(response => {
          response.data.Data.forEach(el => {
           if(el.ClientId && el.ClientId == this.$route.params.result_id){
